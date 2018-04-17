@@ -1,0 +1,3 @@
+export class Endpoints {
+  static CONTEXT_PATH = 'http://localhost:8080/trakmind/api';
+}
