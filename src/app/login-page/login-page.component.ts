@@ -13,6 +13,7 @@ import {Subscription} from 'rxjs/Subscription';
 export class LoginPageComponent implements OnInit {
   model: User = new User();
   resp: Observable<Subscription> | null = null;
+  visibleModal = false;
   constructor(
     private userService: UserService,
     private router: Router
@@ -21,8 +22,12 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit() {
+    this.visibleModal = true;
     this.resp = this.userService.login(this.model.username, this.model.password);
-    this.resp.subscribe();
+    this.resp.subscribe(value => {
+      this.visibleModal = false;
+      return value;
+    });
   }
 
 }

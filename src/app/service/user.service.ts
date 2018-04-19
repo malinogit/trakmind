@@ -17,7 +17,14 @@ export class UserService {
     console.log(this.userDto);
     return this.userHttpService.login(login, password).map(value => {
       this.userAccess = value;
-      return this.getBaseUserDto().pipe(tap(resp => resp, error => console.log(error))).subscribe();
+      return this.getBaseUserDto().pipe(tap(
+        resp => {
+          console.log(resp);
+          return resp;
+        },
+            error => console.log(error)
+        )
+      ).subscribe(value2 => value2);
     });
   }
   getBaseUserDto(): Observable<boolean> {
