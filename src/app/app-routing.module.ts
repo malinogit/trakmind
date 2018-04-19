@@ -5,16 +5,16 @@ import {NgModule} from '@angular/core';
 
 const appRoutes: Routes = [
   {
-    path: 'trakmind/login',
+    path: 'login',
     component: LoginPageComponent
   },
   {
-    path: 'trakmind/error',
+    path: 'error',
     component: ErrorPageComponent
   },
   {
     path: '**',
-    redirectTo: '/trakmind/login'
+    redirectTo: '/login'
   }
 ];
 

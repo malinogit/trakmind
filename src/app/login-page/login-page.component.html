@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container loading-page">
   <div class="row">
     <div class="col-md-offset-5 col-md-3">
       <form (submit)="onSubmit(loginForm)" #loginForm="ngForm">
@@ -9,6 +9,9 @@
           <button class="btn btn-success">Login</button>
         </div>
       </form>
+      <p-dialog class="ui-shadow" vi="resp | async" [visible]="true" [responsive]="false" [draggable]="false" [resizable]="false" [modal]="true" [closeOnEscape]="false" [closable]="false" [minWidth]="0" [minHeight]="0">
+        <img src="../../assets/images/loading_2.gif"/>
+      </p-dialog>
     </div>
   </div>
 </div>

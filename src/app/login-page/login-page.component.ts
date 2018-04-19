@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../service/user.service';
 import {User} from '../model/user';
+import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-login-page',
@@ -10,6 +12,7 @@ import {User} from '../model/user';
 })
 export class LoginPageComponent implements OnInit {
   model: User = new User();
+  resp: Observable<Subscription> | null = null;
   constructor(
     private userService: UserService,
     private router: Router
@@ -18,7 +21,8 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit() {
-    this.userService.login(this.model.username, this.model.password);
+    this.resp = this.userService.login(this.model.username, this.model.password);
+    this.resp.subscribe();
   }
 
 }

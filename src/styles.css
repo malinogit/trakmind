@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+.ui-widget-overlay {
+  background-color: #666666;
+  opacity: .20;
+}
+.ui-dialog .ui-dialog-titlebar {
+  padding: 0;
+  position: inherit;
+
+}
+.ui-dialog .ui-dialog-content {
+  padding: 0;
+}
+.loading-page .ui-shadow {
+  box-shadow: none;
+}

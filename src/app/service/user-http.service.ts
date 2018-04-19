@@ -41,8 +41,10 @@ export class UserHttpService {
     };
   }
 
-  getUserDto(userAccess): Observable<UserDto> {
-    return this.http.get<UserDto>(Endpoints.CONTEXT_PATH, this.httpOptions);
+  getUserDto(userAccess: UserAccess, userDto: UserDto): Observable<UserDto> {
+    const requestOptions = this.baseOauthRequestOptions(userAccess);
+    return this.http.get<UserDto>(Endpoints.CONTEXT_PATH + Endpoints.USER_PATH + userDto.username + '?'
+      + requestOptions.params, requestOptions.options);
   }
 
   getUserLogs(userAccess: UserAccess): Observable<any> {
