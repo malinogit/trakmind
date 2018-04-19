@@ -13,6 +13,10 @@ const appRoutes: Routes = [
     component: ErrorPageComponent
   },
   {
+    path: 'kira',
+    redirectTo: '/kira'
+  },
+  {
     path: '**',
     redirectTo: '/login'
   }

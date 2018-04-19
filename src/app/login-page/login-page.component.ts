@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
   model: User = new User();
-  resp: Observable<Subscription> | null = null;
+  connecting: Observable<boolean> | null = null;
   visibleModal = false;
   constructor(
     private userService: UserService,
@@ -23,14 +23,10 @@ export class LoginPageComponent implements OnInit {
   }
   onSubmit() {
     this.visibleModal = true;
-    this.resp = this.userService.login(this.model.username, this.model.password);
-    this.resp.subscribe(value => {
-      this.visibleModal = false;
-      let c = 0;
-      while (c < 2000000000) {
-        c++;
-      }
-      this.router.navigate(['/dashboard'])
+    this.connecting = this.userService.login(this.model.username, this.model.password);
+    this.connecting.subscribe(value => {
+      console.log(this.router.navigateByUrl('kira'));
+      this.visibleModal = true;
       return value;
     });
   }

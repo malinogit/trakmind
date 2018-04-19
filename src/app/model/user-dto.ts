@@ -8,5 +8,5 @@ export class UserDto {
   credentialsNonExpired: boolean;
   accountNonLocked: boolean;
   roles: string[];
-  privileges: Privilege[];
+  privileges: string[];
 }

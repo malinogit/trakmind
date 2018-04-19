@@ -1,3 +1,3 @@
 export enum Privilege {
-  KIRA
+  KIRA = 'KIRA'
 }

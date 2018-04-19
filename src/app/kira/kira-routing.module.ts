@@ -23,7 +23,7 @@ const kiraRouter: Routes = [
 ];
 @NgModule({
   imports: [
-    RouterModule.forChild(kiraRouter)
+    RouterModule.forRoot(kiraRouter)
   ],
   exports: [RouterModule],
   declarations: [],

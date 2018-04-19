@@ -4,18 +4,23 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 import {Observable} from 'rxjs/Observable';
 import {Privilege} from '../model/privilege.enum';
 import 'rxjs/add/operator/map';
+import {tap} from 'rxjs/operators';
 
 @Injectable()
 export class KiraGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     console.log('active');
-    if (!this.userService.userHasPrivilege(Privilege.KIRA)) {
-      this.router.navigate(['/error']);
-      console.log('false');
-      return false;
-    }
-    console.log('true');
-    return true;
+    return this.userService.userHasPrivilege(Privilege.KIRA).pipe(tap(
+      (next: boolean) => {
+        if (!next) {
+          this.router.navigate(['/error']);
+        }
+        return next;
+      },
+      error => {
+        this.router.navigate(['/error']);
+        console.log(error);
+      }));
   }
 
   constructor(protected userService: UserService, protected router: Router) {
