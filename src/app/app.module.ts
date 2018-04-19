@@ -15,6 +15,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 import {CodeHighlighterModule, TabViewModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/button';
+import {KiraModule} from './kira/kira.module';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {ButtonModule} from 'primeng/button';
     CommonModule,
     DialogModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    KiraModule
   ],
   providers: [UserService, UserHttpService],
   bootstrap: [AppComponent]

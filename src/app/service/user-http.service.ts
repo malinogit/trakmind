@@ -27,7 +27,6 @@ export class UserHttpService {
     return this.http.post<UserAccess>(Endpoints.CONTEXT_PATH + '/oauth/token?' + this.params.toString(), {}, this.httpOptions).pipe(
       tap(
         resp => {
-          console.log(resp);
           return resp;
         },
         error => this.handleError(error)

@@ -1,3 +1,5 @@
+import {Privilege} from './privilege.enum';
+
 export class UserDto {
   id: number;
   username: string;
@@ -6,4 +8,5 @@ export class UserDto {
   credentialsNonExpired: boolean;
   accountNonLocked: boolean;
   roles: string[];
+  privileges: Privilege[];
 }

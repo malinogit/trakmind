@@ -6,35 +6,42 @@ import {Observable, Subscribable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {Subscription} from 'rxjs/Subscription';
 import {tap} from 'rxjs/operators';
+import {Privilege} from '../model/privilege.enum';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class UserService {
-  constructor(private userHttpService: UserHttpService) { }
+  constructor(
+    private userHttpService: UserHttpService
+  ) { }
   private userAccess: UserAccess;
   private userDto: UserDto = new UserDto();
   login(login, password): Observable<Subscription> {
     this.userDto.username = login;
-    console.log(this.userDto);
     return this.userHttpService.login(login, password).map(value => {
       this.userAccess = value;
       return this.getBaseUserDto().pipe(tap(
         resp => {
-          console.log(resp);
-          return resp;
+          return resp.username;
         },
             error => console.log(error)
         )
-      ).subscribe(value2 => value2);
+      ).subscribe(value2 => {
+        console.log('dziala');
+        return value2;
+      });
     });
   }
-  getBaseUserDto(): Observable<boolean> {
+  getBaseUserDto(): Observable<UserDto> {
     return this.userHttpService.getUserDto(this.userAccess, this.userDto).map(res => {
       this.userDto = res;
-      console.log(this.userDto);
-      return true;
+      return res;
     });
   }
   canActivePage(): Observable<boolean> {
     return Observable.create(this.userAccess && this.userAccess.expires_in);
+  }
+  userHasPrivilege(privilege: Privilege): boolean {
+    return !!(this.userDto && this.userDto.privileges && this.userDto.privileges.includes(privilege));
   }
 }
