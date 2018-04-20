@@ -16,13 +16,15 @@ import {CommonModule} from '@angular/common';
 import {CodeHighlighterModule, TabViewModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/button';
 import {KiraModule} from './kira/kira.module';
+import {ViewBlockerComponent} from './util/view-blocker/view-blocker.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ViewBlockerComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import {KiraModule} from './kira/kira.module';
     KiraModule
   ],
   providers: [UserService, UserHttpService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule {
 }

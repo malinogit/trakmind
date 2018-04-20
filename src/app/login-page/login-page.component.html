@@ -1,3 +1,4 @@
+<app-view-blocker [visible]="visibleModal"></app-view-blocker>
 <div class="container loading-page">
   <div class="row">
     <div class="col-md-offset-5 col-md-3">
@@ -9,9 +10,6 @@
           <button class="btn btn-success">Login</button>
         </div>
       </form>
-      <p-dialog class="ui-shadow" [visible]="visibleModal" [responsive]="false" [draggable]="false" [resizable]="false" [modal]="true" [closeOnEscape]="false" [closable]="false" [minWidth]="0" [minHeight]="0">
-        <img style="max-width: 100%" src="../../assets/images/loading_2.gif"/>
-      </p-dialog>
     </div>
   </div>
 </div>

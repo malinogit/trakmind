@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ViewBlockerService} from '../service/view-blocker.service';
 
 @Component({
   selector: 'app-kira',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./kira.component.css']
 })
 export class KiraComponent implements OnInit {
-
-  constructor() { }
+  visibleModal = this.viewBlockerService.visibleModal;
+  constructor(
+    private viewBlockerService: ViewBlockerService
+  ) { }
 
   ngOnInit() {
   }
