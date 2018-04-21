@@ -5,9 +5,12 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {KiraGuardService} from './kira-guard.service';
 import {KiraRoutingModule} from './kira-routing.module';
 import {ViewBlockerComponent} from '../util/view-blocker/view-blocker.component';
+import {DialogModule} from 'primeng/dialog';
+import {ViewBlockerService} from '../service/view-blocker.service';
 
 @NgModule({
   imports: [
+    DialogModule,
     CommonModule,
     KiraRoutingModule
   ],
@@ -17,9 +20,11 @@ import {ViewBlockerComponent} from '../util/view-blocker/view-blocker.component'
     ViewBlockerComponent
   ],
   providers: [
-    KiraGuardService
+    KiraGuardService,
+    ViewBlockerService
   ],
   exports: [
+    ViewBlockerComponent
   ]
 })
 export class KiraModule {

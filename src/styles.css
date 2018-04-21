@@ -9,6 +9,6 @@
 .ui-dialog .ui-dialog-content {
   padding: 0;
 }
-.loading-page .ui-shadow {
+.view-blocker .ui-shadow {
   box-shadow: none;
 }

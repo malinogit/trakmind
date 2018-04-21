@@ -22,7 +22,10 @@ export class KiraGuardService implements CanActivate {
       error => {
         this.router.navigate(['/error']);
         console.log(error);
-      }));
+      })).map( next => {
+        this.viewBlockerService.visibleModal.visible = false;
+        return next;
+    });
   }
 
   constructor(protected userService: UserService, protected router: Router, private viewBlockerService: ViewBlockerService) {

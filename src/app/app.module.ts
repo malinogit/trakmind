@@ -16,15 +16,13 @@ import {CommonModule} from '@angular/common';
 import {CodeHighlighterModule, TabViewModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/button';
 import {KiraModule} from './kira/kira.module';
-import {ViewBlockerComponent} from './util/view-blocker/view-blocker.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    LoginPageComponent,
-    ViewBlockerComponent
+    LoginPageComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +34,6 @@ import {ViewBlockerComponent} from './util/view-blocker/view-blocker.component';
     BrowserModule,
     FormsModule,
     CommonModule,
-    DialogModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     KiraModule
