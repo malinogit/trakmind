@@ -16,6 +16,7 @@ export class UserService {
     private userHttpService: UserHttpService
   ) { }
   userAccess: UserAccess;
+  private sessionUser: UserAccess;
   private userDto: UserDto = new UserDto();
   login(login, password): Observable<boolean> {
     this.userDto.username = login;
@@ -41,14 +42,23 @@ export class UserService {
         return false;
       });
   }
-  canActivePage(): Observable<boolean> {
-    return Observable.create(this.userAccess && this.userAccess.expires_in);
-  }
   userHasPrivilege(privilege: Privilege): Observable<boolean> {
     if (!this.userDto || !this.userDto.privileges) {
       return this.updateUserDto().map((value1: boolean) => {
         return value1 && this.userDto && this.userDto.privileges && this.userDto.privileges.includes(privilege);
       });
     }
+  }
+  initSessionUser(): void {
+    this.userHttpService.initSessionUser().subscribe(value => {
+      this.sessionUser = value;
+      return value;
+    });
+  }
+  registration(): void {
+    this.userHttpService.registerUser(this.sessionUser, new UserDto()).subscribe(value => {
+      console.log(this.sessionUser);
+      return value;
+    });
   }
 }

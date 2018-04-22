@@ -19,6 +19,7 @@ export class LoginPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.userService.initSessionUser();
   }
   onSubmit() {
     this.visibleModal = true;

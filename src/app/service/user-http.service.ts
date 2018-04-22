@@ -39,6 +39,28 @@ export class UserHttpService {
       return of(result as T);
     };
   }
+  initSessionUser(): Observable<UserAccess> {
+    this.params = new URLSearchParams();
+    this.params.append('username', 'Anonymous');
+    this.params.append('password', 'password');
+    this.params.append('grant_type', 'password');
+    this.params.append('client_id', 'web-trakmind');
+    return this.http.post<UserAccess>(Endpoints.CONTEXT_PATH + '/oauth/token?' + this.params.toString(), {}, this.httpOptions).pipe(
+      tap(
+        resp => {
+          return resp;
+        },
+        error => this.handleError(error)
+      )
+    );
+  }
+  registerUser(sessionUser: UserAccess, userDto: UserDto): Observable<UserDto> {
+    return this.http.post<UserDto>(Endpoints.CONTEXT_PATH + Endpoints.USER_PATH + 'registration', JSON.stringify(userDto),
+      {headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + sessionUser.access_token,
+          'Content-type': 'application/json'
+        })}).map(next => { console.log(next); return next; });
+  }
 
   getUserDto(userAccess: UserAccess, userDto: UserDto): Observable<UserDto> {
     const requestOptions = this.baseOauthRequestOptions(userAccess);
