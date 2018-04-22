@@ -16,13 +16,15 @@ import {CommonModule} from '@angular/common';
 import {CodeHighlighterModule, TabViewModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/button';
 import {KiraModule} from './kira/kira.module';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     CommonModule,

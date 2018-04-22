@@ -30,5 +30,7 @@ export class LoginPageComponent implements OnInit {
       return value;
     });
   }
-
+  goToRegister() {
+    this.router.navigateByUrl('register');
+  }
 }

@@ -1,5 +1,4 @@
 <app-view-blocker [visible]="visibleModal"></app-view-blocker>
-<div onload="initSessionUser()"></div>
 <div class="container loading-page">
   <div class="row">
     <div class="col-md-offset-5 col-md-3">
@@ -11,6 +10,7 @@
           <button class="btn btn-success">Login</button>
         </div>
       </form>
+      <button (click)="goToRegister()">Register</button>
 
     </div>
   </div>

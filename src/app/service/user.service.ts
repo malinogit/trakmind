@@ -55,8 +55,9 @@ export class UserService {
       return value;
     });
   }
-  registration(): void {
-    this.userHttpService.registerUser(this.sessionUser, new UserDto()).subscribe(value => {
+  registration(userDto: UserDto): void {
+    console.log(this.sessionUser);
+    this.userHttpService.registerUser(this.sessionUser, userDto).subscribe(value => {
       console.log(this.sessionUser);
       return value;
     });
