@@ -6,13 +6,14 @@ import {Privilege} from '../model/privilege.enum';
 import 'rxjs/add/operator/map';
 import {tap} from 'rxjs/operators';
 import {ViewBlockerService} from '../service/view-blocker.service';
+import {Role} from '../model/role.enum';
 
 @Injectable()
 export class KiraGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     console.log('active');
     this.viewBlockerService.visibleModal.visible = true;
-    return this.userService.userHasPrivilege(Privilege.KIRA).pipe(tap(
+    return this.userService.userHasRole([Role.BASIC_USER, Role.GLOBAL_ADMIN] ).pipe(tap(
       (next: boolean) => {
         if (!next) {
           this.router.navigate(['/error']);

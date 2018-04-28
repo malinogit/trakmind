@@ -12,3 +12,7 @@
 .view-blocker .ui-shadow {
   box-shadow: none;
 }
+.kkk:hover {
+  cursor: pointer;
+  border: red solid 1px;
+}

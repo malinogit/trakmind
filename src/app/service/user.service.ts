@@ -9,6 +9,8 @@ import {tap} from 'rxjs/operators';
 import {Privilege} from '../model/privilege.enum';
 import {Router} from '@angular/router';
 import {forEach} from '@angular/router/src/utils/collection';
+import {Role} from '../model/role.enum';
+import {of} from 'rxjs/observable/of';
 
 @Injectable()
 export class UserService {
@@ -31,7 +33,6 @@ export class UserService {
     );
   }
   updateUserDto(): Observable<boolean> {
-    console.log(this.userAccess);
     return this.userHttpService.getUserDto(this.userAccess, this.userDto).map(
       res => {
       this.userDto = res;
@@ -41,6 +42,21 @@ export class UserService {
         console.log(error);
         return false;
       });
+  }
+  userHasRole(roles: Role[]): Observable<boolean> {
+    const containsString = function (val: Role) {
+      return roles.includes(val);
+    };
+    if (roles === null || roles.length === 0) {
+      return of(true);
+    }
+    if (!this.userDto || !this.userDto.roles) {
+      return this.updateUserDto().map((value1: boolean) => {
+        return value1 && this.userDto && this.userDto.roles && this.userDto.roles.some((role: Role) => containsString(role));
+      });
+    } else {
+      return of(this.userDto.roles.some((role: Role) => containsString(role)));
+    }
   }
   userHasPrivilege(privilege: Privilege): Observable<boolean> {
     if (!this.userDto || !this.userDto.privileges) {

@@ -17,6 +17,8 @@ import {CodeHighlighterModule, TabViewModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/button';
 import {KiraModule} from './kira/kira.module';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import {AdminPanelModule} from './admin-panel/admin-panel.module';
+import {SharedComponentModule} from './util/shared-component/shared-component.module';
 
 
 @NgModule({
@@ -28,7 +30,6 @@ import { RegisterPageComponent } from './register-page/register-page.component';
   ],
   imports: [
     CommonModule,
-    DialogModule,
     ButtonModule,
     TabViewModule,
     CodeHighlighterModule,
@@ -38,7 +39,10 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    KiraModule
+    KiraModule,
+    AdminPanelModule,
+    SharedComponentModule,
+    DialogModule
   ],
   providers: [UserService, UserHttpService],
   bootstrap: [AppComponent],

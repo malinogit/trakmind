@@ -1,17 +1,29 @@
-<app-view-blocker [visible]="visibleModal"></app-view-blocker>
+<app-view-blocker [visible]="viewBlockerModal"></app-view-blocker>
 <div class="container loading-page">
   <div class="row">
     <div class="col-md-offset-5 col-md-3">
       <form (submit)="onSubmit(loginForm)" #loginForm="ngForm">
         <div class="form-login">
           <h4>Welcome back.</h4>
-          <input id="userName" class="form-control input-sm chat-input" placeholder="username" [(ngModel)]="model.username" name="username"/>
-          <input id="password" class="form-control input-sm chat-input" placeholder="password" [(ngModel)]="model.password" name="password"/>
+          <input id="userName" class="form-control input-sm chat-input" placeholder="username"
+                 [(ngModel)]="model.username" name="username"/>
+          <input id="password" class="form-control input-sm chat-input" placeholder="password"
+                 [(ngModel)]="model.password" name="password"/>
           <button class="btn btn-success">Login</button>
         </div>
       </form>
       <button (click)="goToRegister()">Register</button>
-
     </div>
   </div>
 </div>
+<p-dialog class="ui-shadow" [visible]="viewModuleSelectorModal" [responsive]="false" [draggable]="false"
+          [resizable]="false" [modal]="true" [closeOnEscape]="false" [closable]="false" [minWidth]="0" [minHeight]="0">
+  <p-header><h1>Module Selector</h1></p-header>
+  <div style="margin: 10px" >
+    <div class="kkk" *ngFor="let module of modules; let i = index" >
+      <span *ngIf="i%2 === 0" class="d-block p-2 bg-info text-white">{{module.toString()}}</span>
+      <span *ngIf="i%2 === 1" class="d-block p-2 bg-dark text-white">{{module.toString()}}</span>
+    </div>
+  </div>
+  <p-footer><p-button (onClick)="moduleSelectorHide()" label="Close" styleClass="ui-button-warning"></p-button></p-footer>
+</p-dialog>

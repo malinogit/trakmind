@@ -7,24 +7,24 @@ import {KiraRoutingModule} from './kira-routing.module';
 import {ViewBlockerComponent} from '../util/view-blocker/view-blocker.component';
 import {DialogModule} from 'primeng/dialog';
 import {ViewBlockerService} from '../service/view-blocker.service';
+import {SharedModule} from 'primeng/shared';
+import {SharedComponentModule} from '../util/shared-component/shared-component.module';
 
 @NgModule({
   imports: [
     DialogModule,
     CommonModule,
-    KiraRoutingModule
+    KiraRoutingModule,
+    SharedComponentModule
   ],
   declarations: [
     KiraComponent,
-    DashboardComponent,
-    ViewBlockerComponent
+    DashboardComponent
   ],
   providers: [
     KiraGuardService,
-    ViewBlockerService
   ],
   exports: [
-    ViewBlockerComponent
   ]
 })
 export class KiraModule {
