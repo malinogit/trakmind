@@ -19,6 +19,7 @@ import {KiraModule} from './kira/kira.module';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import {AdminPanelModule} from './admin-panel/admin-panel.module';
 import {SharedComponentModule} from './util/shared-component/shared-component.module';
+import {TasklerModule} from './taskler/taskler.module';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import {SharedComponentModule} from './util/shared-component/shared-component.mo
     BrowserAnimationsModule,
     AppRoutingModule,
     KiraModule,
+    TasklerModule,
     AdminPanelModule,
     SharedComponentModule,
     DialogModule

@@ -22,6 +22,14 @@ const appRoutes: Routes = [
     redirectTo: '/kira'
   },
   {
+    path: 'taskler',
+    redirectTo: '/taskler'
+  },
+  {
+    path: 'admin-panel',
+    redirectTo: '/admin-panel'
+  },
+  {
     path: '**',
     redirectTo: '/login'
   }

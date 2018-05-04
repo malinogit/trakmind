@@ -20,7 +20,7 @@
           [resizable]="false" [modal]="true" [closeOnEscape]="false" [closable]="false" [minWidth]="0" [minHeight]="0">
   <p-header><h1>Module Selector</h1></p-header>
   <div style="margin: 10px" >
-    <div class="kkk" *ngFor="let module of modules; let i = index" >
+    <div class="kkk" *ngFor="let module of modules; let i = index" (click)="selectedModule(module)" >
       <span *ngIf="i%2 === 0" class="d-block p-2 bg-info text-white">{{module.toString()}}</span>
       <span *ngIf="i%2 === 1" class="d-block p-2 bg-dark text-white">{{module.toString()}}</span>
     </div>

@@ -39,12 +39,12 @@ export class LoginPageComponent implements OnInit {
             this.viewModuleSelectorModal = true;
             this.userService.userHasRole([Role.BASIC_USER]).subscribe(next => {
               if (next === true) {
-                this.modules = [ModuleEnum.BINARY_TREE, ModuleEnum.KIRA];
+                this.modules = [ModuleEnum.TASKLER, ModuleEnum.KIRA];
               }
             });
             this.userService.userHasRole([Role.GLOBAL_ADMIN]).subscribe(next => {
               if (next === true) {
-                this.modules = [ModuleEnum.KIRA, ModuleEnum.BINARY_TREE, ModuleEnum.ADMIN_PANEL];
+                this.modules = [ModuleEnum.KIRA, ModuleEnum.TASKLER, ModuleEnum.ADMIN_PANEL];
               }
             });
           } else {
@@ -55,6 +55,20 @@ export class LoginPageComponent implements OnInit {
         alert('failed to login');
       }
     });
+  }
+
+  selectedModule(module: ModuleEnum) {
+    switch (module) {
+      case ModuleEnum.KIRA : {
+        this.router.navigateByUrl('kira');
+      } break;
+      case ModuleEnum.TASKLER : {
+        this.router.navigateByUrl('taskler');
+      } break;
+      case ModuleEnum.ADMIN_PANEL : {
+        this.router.navigateByUrl('admin-panel');
+      } break;
+    }
   }
 
   goToRegister() {
